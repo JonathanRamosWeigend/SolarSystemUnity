@@ -34,9 +34,9 @@ public class SolarSystem : MonoBehaviour
             sphere.transform.localScale = GetUnityScale(h.radius);
             sphere.transform.position = GetUnityPosition(h.position);
             Renderer renderer = sphere.GetComponent<Renderer>();
-            Color color = new Color(h.farbe.R, h.farbe.G, h.farbe.B);
+            Color color = new Color(h.farbe.R / 256f, h.farbe.G / 256f, h.farbe.B / 256f);
             renderer.material.color = color;
-            renderer.material.SetFloat("_Metallic", 0.5f);
+            renderer.material.SetFloat("_Metallic", 0.7f);
             solarObjects.Add(sphere);
         }
     }
