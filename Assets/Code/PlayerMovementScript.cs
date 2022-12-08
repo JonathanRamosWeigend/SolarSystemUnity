@@ -13,6 +13,8 @@ public class PlayerMovementScript : MonoBehaviour
 
     public float speed = 12f;
 
+    public float flyingSpeed = 10.0f;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,5 +23,15 @@ public class PlayerMovementScript : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
+
+        // Fliegen durch Drücken der Leertaste
+        if (Input.GetKey(KeyCode.Space))
+        {
+            // Bewegung in Richtung der aktuellen Blickrichtung
+            Vector3 movement = transform.up * Time.deltaTime * flyingSpeed;
+
+            // Verschiebung des Charakters um die berechnete Bewegung
+            controller.Move(movement);
+        }
     }
 }

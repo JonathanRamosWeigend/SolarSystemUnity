@@ -5,7 +5,6 @@
 /// November 2022, Blumenau Brasilien
 /// --------------------------------------------------------------------------------------------------------
 /// </summary>
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -37,7 +36,7 @@ public class SolarSystem : MonoBehaviour
             Renderer renderer = sphere.GetComponent<Renderer>();
             Color color = new Color(h.farbe.R, h.farbe.G, h.farbe.B);
             renderer.material.color = color;
-            //renderer.material.SetFloat("_Glossiness", .56f);
+            renderer.material.SetFloat("_Metallic", 0.5f);
             solarObjects.Add(sphere);
         }
     }
@@ -45,7 +44,12 @@ public class SolarSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        //if (Input.anyKey)
         //{
         for (int i = 0; i < Time.deltaTime * 1000; i++)
         {
