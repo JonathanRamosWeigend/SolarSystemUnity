@@ -1,4 +1,4 @@
-# Animated Solar System with Unity
+# Animated Solar System running on Unity
 
 ## Animated by using Newtons Law of Universal Gravitation
 
