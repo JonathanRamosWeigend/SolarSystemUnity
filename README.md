@@ -1,6 +1,6 @@
-# Solar System with Unity
+# Animated Solar System with Unity
 
-## Newtons Law of Universal Gravitation
+## Animated by using Newtons Law of Universal Gravitation
 
 Build with Unity and C#.
 
