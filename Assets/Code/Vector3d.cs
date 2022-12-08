@@ -6,13 +6,11 @@
 /// --------------------------------------------------------------------------------------------------------
 /// </summary>
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 /// <summary>
 /// Simple Vector of 3 doubles for double precision.
 /// </summary>
-public class Vector3d 
+public class Vector3d
 {
     public double x { get; set; }
     public double y { get; set; }
@@ -34,7 +32,7 @@ public class Vector3d
 
     public double GetLength()
     {
-        return Math.Sqrt(x * x + y * y + z * z);   
+        return Math.Sqrt(x * x + y * y + z * z);
     }
 
 }

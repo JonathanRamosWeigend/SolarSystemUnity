@@ -5,7 +5,7 @@
 /// November 2022, Blumenau Brasilien
 /// --------------------------------------------------------------------------------------------------------
 /// </summary>
-using System.Collections;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -31,26 +31,28 @@ public class SolarSystem : MonoBehaviour
         foreach (Himmelskoerper h in sonnensystem.GetHimmelskoerper())
         {
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.name = h.name;
             sphere.transform.localScale = GetUnityScale(h.radius);
             sphere.transform.position = GetUnityPosition(h.position);
             Renderer renderer = sphere.GetComponent<Renderer>();
             Color color = new Color(h.farbe.R, h.farbe.G, h.farbe.B);
-            renderer.material.color = color;    
+            renderer.material.color = color;
+            //renderer.material.SetFloat("_Glossiness", .56f);
             solarObjects.Add(sphere);
         }
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
         //if (Input.anyKeyDown)
         //{
-            for (int i = 0; i < Time.deltaTime * 1000; i++)
-            {
-                sonnensystem.Tick();
-            }
+        for (int i = 0; i < Time.deltaTime * 1000; i++)
+        {
+            sonnensystem.Tick();
+        }
         //}
-       
+
         int idx = 0;
         foreach (Himmelskoerper h in sonnensystem.GetHimmelskoerper())
         {
@@ -67,10 +69,10 @@ public class SolarSystem : MonoBehaviour
     private Vector3 GetUnityPosition(Vector3d position)
     {
         return new Vector3(
-            (float) (position.x / (DIAMETER_OF_SUN * 10)), 
-            (float) (position.y / (DIAMETER_OF_SUN * 10)), 
-            (float) (position.z / (DIAMETER_OF_SUN * 10))
-            ); 
+            (float)(position.x / (DIAMETER_OF_SUN * 10)),
+            (float)(position.y / (DIAMETER_OF_SUN * 10)),
+            (float)(position.z / (DIAMETER_OF_SUN * 10))
+            );
     }
 
     /// <summary>
@@ -81,8 +83,8 @@ public class SolarSystem : MonoBehaviour
     private Vector3 GetUnityScale(double radius)
     {
         double diameter = radius + radius;
-        float percentOfSun = (float) (diameter / DIAMETER_OF_SUN) * 10;
-        float d = Mathf.Min(percentOfSun, 5);
+        float percentOfSun = (float)(diameter / DIAMETER_OF_SUN) * 10;
+        float d = Mathf.Min(percentOfSun, 3);
         return new Vector3(d, d, d);
     }
 

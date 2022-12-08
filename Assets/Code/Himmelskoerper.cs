@@ -6,12 +6,11 @@
 /// --------------------------------------------------------------------------------------------------------
 /// </summary>
 
-using System.Numerics;
-using System.Drawing;
 using System;
+using System.Drawing;
 
 public class Himmelskoerper
-{ 
+{
     public string name { get; }
     public double masse { get; }
     public double radius { get; }

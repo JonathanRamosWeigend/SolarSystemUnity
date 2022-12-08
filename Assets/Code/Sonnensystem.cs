@@ -8,20 +8,19 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Numerics;
 
 
 public class Sonnensystem
 {
     private List<Himmelskoerper> himmelkoerper = new List<Himmelskoerper>();
 
-    public Sonnensystem() 
+    public Sonnensystem()
     {
-        himmelkoerper.Add(new Himmelskoerper("Sonne", 
-            1.989 * Math.Pow(10, 30), 
-            1391000 / 2, 
-            new Vector3d(0.0f * Math.Pow(10, 6), 0, 0), 
-            new Vector3d(0, 0, 0), 
+        himmelkoerper.Add(new Himmelskoerper("Sonne",
+            1.989 * Math.Pow(10, 30),
+            1391000 / 2,
+            new Vector3d(0.0f * Math.Pow(10, 6), 0, 0),
+            new Vector3d(0, 0, 0),
             Color.Yellow
             ));
 
@@ -34,7 +33,7 @@ public class Sonnensystem
             ));
 
         himmelkoerper.Add(new Himmelskoerper("Venus",
-            4.9 * Math.Pow(10,24),
+            4.9 * Math.Pow(10, 24),
             12103 / 2,
             new Vector3d(108 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 126072, 0),
@@ -42,11 +41,11 @@ public class Sonnensystem
             ));
 
         himmelkoerper.Add(new Himmelskoerper("Erde",
-            6.0 * Math.Pow(10,24),
+            6.0 * Math.Pow(10, 24),
             12756.28 / 2,
-            new Vector3d(149 * Math.Pow(10,6), 0, 0),
+            new Vector3d(149 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 107208, 0),
-            Color.SkyBlue
+            Color.DeepSkyBlue
             ));
 
         himmelkoerper.Add(new Himmelskoerper("Mars",
@@ -62,13 +61,13 @@ public class Sonnensystem
             142984 / 2,
             new Vector3d(778 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 47052, 0),
-            Color.Beige
+            Color.BurlyWood
             ));
 
         himmelkoerper.Add(new Himmelskoerper("Saturn",
-            5.7 * Math.Pow(10,26),
+            5.7 * Math.Pow(10, 26),
             120536 / 2,
-            new Vector3d(1427 * Math.Pow(10,6), 0, 0),
+            new Vector3d(1427 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 34884, 0),
             Color.LightGray
             ));
@@ -77,15 +76,15 @@ public class Sonnensystem
         himmelkoerper.Add(new Himmelskoerper("Uranus",
             8.7 * Math.Pow(10, 25),
             51118 / 2,
-            new Vector3d(2871 * Math.Pow(10,6), 0, 0),
+            new Vector3d(2871 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 24516, 0),
-            Color.LightSkyBlue
+            Color.Blue
             ));
 
         himmelkoerper.Add(new Himmelskoerper("Neptun",
             1.02 * Math.Pow(10, 26),
             49532 / 2,
-            new Vector3d(4498 * Math.Pow(10,6), 0, 0),
+            new Vector3d(4498 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 19548, 0),
             Color.DeepSkyBlue
             ));
@@ -96,7 +95,7 @@ public class Sonnensystem
             new Vector3d(5906 * Math.Pow(10, 6), 0, 0),
             new Vector3d(0, 16812, 0),
             Color.White
-            )); 
+            ));
     }
 
     public double GetTotalSize()
@@ -119,7 +118,7 @@ public class Sonnensystem
             {
                 if (h1 == h2) continue;
                 double r = new Vector3d(
-                    h1.position.x - h2.position.x, 
+                    h1.position.x - h2.position.x,
                     h1.position.y - h2.position.y,
                     h1.position.z - h2.position.z).GetLength();
 
