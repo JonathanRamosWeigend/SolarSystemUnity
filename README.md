@@ -1,4 +1,4 @@
-# SolarSystem2
+# Solar System with Unity
 
 ## Newtons Law of Universal Gravitation
 
