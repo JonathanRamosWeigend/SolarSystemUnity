@@ -8,6 +8,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Mapping zwischen Unity und der von Unity unabhängigen Logik des Sonnensystems.
@@ -24,19 +25,25 @@ public class SolarSystem : MonoBehaviour
     // The corresponding List of Unity Spheres 
     private List<GameObject> solarObjects = new List<GameObject>();
 
+    private bool running = true;
+
     // Start is called before the first frame update
     void Start()
     {
         foreach (Himmelskoerper h in sonnensystem.GetHimmelskoerper())
         {
-            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.name = h.name;
+            GameObject sphere = GameObject.Find(h.name);
+            if (sphere == null) 
+            {
+                sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                sphere.name = h.name;
+                Renderer renderer = sphere.GetComponent<Renderer>();
+                Color color = new Color(h.farbe.R / 256f, h.farbe.G / 256f, h.farbe.B / 256f);
+                renderer.material.color = color;
+                renderer.material.SetFloat("_Metallic", 0.7f);
+            }
             sphere.transform.localScale = GetUnityScale(h.radius);
             sphere.transform.position = GetUnityPosition(h.position);
-            Renderer renderer = sphere.GetComponent<Renderer>();
-            Color color = new Color(h.farbe.R / 256f, h.farbe.G / 256f, h.farbe.B / 256f);
-            renderer.material.color = color;
-            renderer.material.SetFloat("_Metallic", 0.7f);
             solarObjects.Add(sphere);
         }
     }
@@ -49,13 +56,20 @@ public class SolarSystem : MonoBehaviour
             Application.Quit();
         }
 
-        //if (Input.anyKey)
-        //{
+        if(Input.GetKeyDown(KeyCode.Return)) 
+        {
+            running ^= true;
+        }
+
+        if (!running)
+        {
+            return;
+        }
+
         for (int i = 0; i < Time.deltaTime * 1000; i++)
         {
             sonnensystem.Tick();
         }
-        //}
 
         int idx = 0;
         foreach (Himmelskoerper h in sonnensystem.GetHimmelskoerper())
